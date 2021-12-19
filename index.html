@@ -1,45 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> PASSWORD GENERATOR APP </title>
-  <link rel="stylesheet" href="style.css" /> 
-  <script src="script.js" defer></script>
-</head>
-
-<body>
-    <form id="passwordGeneratorForm">
-        <div class="container">
-            <h2>Password Generator Application</h2>
-            <div class="result__container">
-                <span id="result"></span>
-                <button id="copy">Copy</button>
-            </div>
-            <div class="options">
-                <div class="option">
-                    <label>Length</label>
-                    <input type="number" id="length" min="4" max="20" value="10">
-                </div>
-                <div class="option">
-                    <label>Include Uppercase</label>
-                    <input type="checkbox" id="uppercase" checked>
-                </div>
-                <div class="option">
-                    <label>Include Numbers</label>
-                    <input type="checkbox" id="numbers" checked>
-                </div>
-                <div class="option">
-                    <label>Include Symbols</label>
-                    <input type="checkbox" id="symbols" checked>
-                </div>
-            </div>
-            <button class="btn" id="generate" type="submit">Generate Password</button>
-        </div>
-    </form>
- </body>
- </html>
-
+<!DOCTYPE html>  
+ <html lang="en">  
+ <head>  
+   <meta charset="UTF-8">  
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+   <title>password Gen..</title>  
+   <link rel="stylesheet" href="style.css">  
+ </head>  
+ <body>  
+   <div class="pw-container">  
+     <div class="pw-header">  
+       <div class="pw">  
+         <span id="pw"> Password Here</span>  
+         <button id="copy">Copy</button>  
+       </div>  
+     </div>  
+     <div class="pw-body">  
+       <div class="form-control">  
+         <lable for="length">Password Length</lable>  
+         <input id="len" value="10" type="number" min="8" max="30">  
+       </div>  
+       <div class="form-control">  
+         <lable for="upper">Contain Uppercase Letters</lable>  
+         <input id="upper" type="checkbox">  
+       </div>  
+       <div class="form-control">  
+         <lable for="lower">Contain Lowercase Letters</lable>  
+         <input id="lower" type="checkbox">  
+       </div>  
+       <div class="form-control">  
+         <lable for="number">Contain Numbers </lable>  
+         <input id="number" type="checkbox">  
+       </div>  
+       <div class="form-control">  
+         <lable for="symbol">Contain Symbol</lable>  
+         <input id="symbol" type="checkbox">  
+       </div>  
+       <button class="generate" id="generate">Generate Paaword</button>  
+     </div>  
+   </div>  
+   <script src="srcipt.js"></script>  
+ </body>  
+ </html>  
 
  
