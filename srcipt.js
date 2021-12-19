@@ -1,80 +1,73 @@
-// Getting the DOM Eleements
-const resultDOM = document.getElementById('result');
-const copybtnDOM = document.getElementById('copy');
-const lengthDOM = document.getElementById('length');
-const uppercaseDOM = document.getElementById('uppercase');
-const numbersDOM = document.getElementById('numbers');
-const symbolsDOM = document.getElementById('symbols');
-const generatebtn = document.getElementById('generate');
-const form = document.getElementById('passwordGeneratorForm');
-
-// Generating Character Codes For The Application 
-const UPPERCASE_CODES = arrayFromLowToHigh(65, 90);
-const LOWERCASE_CODES = arrayFromLowToHigh(97, 122);
-const NUMBER_CODES = arrayFromLowToHigh(48, 57);
-const SYMBOL_CODES = arrayFromLowToHigh(33, 47)
-  .concat(arrayFromLowToHigh(58, 64))
-  .concat(arrayFromLowToHigh(91, 96))
-  .concat(arrayFromLowToHigh(123, 126));
-
-// Copy Password
-copybtnDOM.addEventListener('click', () => {
-  const textarea = document.createElement('textarea');
-  const passwordToCopy = resultDOM.innerText;
-
-  // Edge Case when Password is Empty
-  if (!passwordToCopy) return;
-
-  // Copy Functionality
-  textarea.value = passwordToCopy;
-  document.body.appendChild(textarea);
-  textarea.select();
-  document.execCommand('copy');
-  textarea.remove();
-  alert('Password Copied to Clipboard');
-});
-
-// Checking the options that are selected and setting the password
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const characterAmount = lengthDOM.value;
-  const includeUppercase = uppercaseDOM.checked;
-  const includeNumbers = numbersDOM.checked;
-  const includeSymbols = symbolsDOM.checked;
-  const password = generatePassword(
-    characterAmount,
-    includeUppercase,
-    includeNumbers,
-    includeSymbols
-  );
-  resultDOM.innerText = password;
-});
-
-// The Password Generating Function
-let generatePassword = (
-  characterAmount,
-  includeUppercase,
-  includeNumbers,
-  includeSymbols
-) => {
-  let charCodes = LOWERCASE_CODES;
-  if (includeUppercase) charCodes = charCodes.concat(UPPERCASE_CODES);
-  if (includeSymbols) charCodes = charCodes.concat(SYMBOL_CODES);
-  if (includeNumbers) charCodes = charCodes.concat(NUMBER_CODES);
-  const passwordCharacters = [];
-  for (let i = 0; i < characterAmount; i++) {
-    const characterCode =
-      charCodes[Math.floor(Math.random() * charCodes.length)];
-    passwordCharacters.push(String.fromCharCode(characterCode));
-  }
-  return passwordCharacters.join('');
-};
-
-// The Character Code Generating Function
-function arrayFromLowToHigh(low, high) {
-  const array = [];
-  for (let i = low; i <= high; i++) {
-    array.push(i);
-  }
-  return array;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');  
+*{  
+  box-sizing: border-box;  
+}  
+body{  
+  margin: 0;  
+  font-family: "Poppins", sans-serif;  
+ background-color: rgb(181, 194, 135);  
+ color: #eee;  
+ display: flex;  
+ align-items: center;  
+ justify-content: center;  
+ min-height: 100vh;  
+  }  
+  .pw-container{  
+    width: 400px;  
+    background-color: rgb(36, 202, 64);  
+    box-shadow: 0 4px 10px rgba(0,0,0,0.6);  
+  }  
+   .pw-header{  
+    padding: 1rem;  
+   }  
+ .pw{  
+   width: 100%;  
+   height: 70px;  
+   background-color: rgb(72, 214, 219);  
+   display: flex;  
+   align-items: center;  
+   position: relative;  
+   font-size: 1.5rem;  
+   padding: 1rem;  
+   /* overflow: auto; */  
+ }  
+ .pw button{  
+   position: absolute;  
+   top: 0;  
+   right: 0;  
+   transform: translate(0, 50%);  
+   transition: opacity 0.2s ease, transform 0.2s ease;  
+   opacity: 0;  
+   background-color: rgb(28, 252, 21);  
+   padding: 0.25rem 1rem;  
+   font-family: inherit;  
+   font-weight: bold;  
+   color: #fff;  
+   border: none;  
+   cursor: pointer;  
+  }  
+  .pw:hover button{  
+    opacity: 1;  
+    transform: translate(0,-80%);  
+  }  
+   .pw-body{  
+    padding: 0 1rem 1rem;  
+   }  
+ .form-control{  
+   color: #eee;  
+ display: flex;  
+ justify-content: space-between;  
+ margin: 0.75rem 0;  
+ }  
+ .generate{  
+   display: block;  
+   background-color: #ecb602;  
+   color: rgb(70, 29, 255);  
+   font-weight: bold;  
+   padding: 1rem;  
+   font-size: 1.5rem;  
+   margin-top: 1rem;  
+   border: none;  
+   width: 100%;  
+   cursor: pointer;  
+ }  
